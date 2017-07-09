@@ -82,7 +82,7 @@ fi
 # if pak1.pak is loaded then exclude move command
 #------------
 unzip -qq ${path}${save} -d ${path}
-if ! [ "$quake"=="pak1.pak" ]; then 
+if  [ "$quake" != "pak1.pak" ]; then 
 mv ${path}${quake} ${path}pak2.pak 
 fi
 
@@ -96,6 +96,6 @@ fi
 # if pak1.pak is loaded then exclude move command
 #------------
 zip -mj ${path}${save} ${path}*.sav
-if ! [ "$quake"!="pak1.pak" ]; then 
+if  [ "$quake" != "pak1.pak" ]; then 
 mv ${path}pak2.pak ${path}${quake} 
 fi
