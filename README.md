@@ -1,8 +1,10 @@
 # launch-quake-packs-RP-
 This are small bash files to help in launching all Quake Addons within RetroPie
 
-## This verions uses zip as packer please install zip first via `sudo apt install zip`
+## This verions uses zip as packer 
+## please install zip first via `sudo apt install zip`
 
+```
 # +------------------------------------------------------------------------------------+
 # | Launch Quake with addons hipnotic, rogue, dopa v1 07/09/17                         |
 # |                                                                                    |
@@ -40,5 +42,4 @@ This are small bash files to help in launching all Quake Addons within RetroPie
 # |                            !!old but not outdated!!                                |
 # |                                                                                    |
 # +------------------------------------------------------------------------------------+
-
-
+```
