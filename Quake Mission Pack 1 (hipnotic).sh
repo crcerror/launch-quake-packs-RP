@@ -1,6 +1,6 @@
 #!/bin/bash
 # +------------------------------------------------------------------------------------+
-# | Launch Quake with addons hipnotic, rogue, dopa 07/09/17                            |
+# | Launch Quake with addons hipnotic, rogue, dopa and other packs       rel. 07/09/17 |
 # |                                                                                    |
 # | Prerequisites:                                                                     |
 # | 1. Registered Version of QUAKE in v.1.06 or 1.08                                   |
@@ -10,13 +10,13 @@
 # | 5. Raspberry Pie with RetroPie and libretro-tyrquake installed                     |
 # | 6. Working zip! If not type "sudo apt install zip"                                 |
 # |                                                                                    |
-# | Episode 5 - Dimension of the Past is released for free at                          | 
+# | Episode 5 - Dimension of the Past is released for free at                          |
 # | https://cdn.bethsoft.com/quake/dopa.rar                                            |
 # +------------------------------------------------------------------------------------+
 # |                                                                                    |
 # | Why:                                                                               |
 # | I wasn't able to run HIPNOTIC and ROGUE as descriped in the wiki                   |
-# |                                                                                    | 
+# |                                                                                    |
 # | How to:                                                                            |
 # | In your base folder ~/RetroPie/roms/quake/id1/ are two files pak0.pak and pak1.pak |
 # | these are the base files for QUAKE.                                                |
@@ -74,7 +74,7 @@ fi
 #------------
 if ! [ -e "${path}/$quake" ]; then
 echo "Error! ${path}/$quake not found!"
-echoe "Please resolve problem in script or install file!"
+echo "Please resolve problem in script or install file!"
 sleep 10
 exit
 fi
