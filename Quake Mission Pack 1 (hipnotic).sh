@@ -1,6 +1,6 @@
 #!/bin/bash
 # +------------------------------------------------------------------------------------+
-# | Launch Quake with addons hipnotic, rogue, dopa v1 07/09/17                         |
+# | Launch Quake with addons hipnotic, rogue, dopa 07/09/17                            |
 # |                                                                                    |
 # | Prerequisites:                                                                     |
 # | 1. Registered Version of QUAKE in v.1.06 or 1.08                                   |
@@ -36,13 +36,15 @@
 # |                            !!old but not outdated!!                                |
 # |                                                                                    |
 # +------------------------------------------------------------------------------------+
+# | v1.1: Cleaned up code, Now we can handle names with space within          07/10/17 |
+# +------------------------------------------------------------------------------------+
 
 
 # ------------------------------- Settings area ----------------------------------------
 
 # Synopsis - Douple Check pathes and settings
 
-# path variable should always end with slash
+# path variable should not end with slash
 
 # pak1.pak loads full version of Quake
 # dopa.pak loads Episode 5
@@ -50,7 +52,7 @@
 # rogue.pak loads Mission Pack 2
 #------------
 
-path="/home/pi/RetroPie/roms/ports/quake/id1/"
+path="/home/pi/RetroPie/roms/ports/quake/id1"
 quake="hipnotic.pak"
 save="savegames_hipnotic.zip"
 
@@ -60,7 +62,7 @@ save="savegames_hipnotic.zip"
 # Check presence of pak2.pak (forced reboot or annother error)
 # Prevents game file gettig deleted - fail save feature
 #------------
-if [ -e ${path}pak2.pak ]; then
+if [ -e "${path}/pak2.pak" ]; then
 echo "Error! pak2.pak present! Please resolve problem and rename file!"
 echo "I've done NO changes to current media!"
 sleep 10
@@ -70,8 +72,8 @@ fi
 #
 # Is file definated really available?
 #------------
-if ! [ -e ${path}${quake} ]; then
-echo "Error! " $path$quake "not found!"
+if ! [ -e "${path}/$quake" ]; then
+echo "Error! ${path}/$quake not found!"
 echoe "Please resolve problem in script or install file!"
 sleep 10
 exit
@@ -81,21 +83,22 @@ fi
 # Extracting gamessaves
 # if pak1.pak is loaded then exclude move command
 #------------
-unzip -qq ${path}${save} -d ${path}
-if  [ "$quake" != "pak1.pak" ]; then 
-mv ${path}${quake} ${path}pak2.pak 
+unzip -qq -o "${path}/$save" -d "$path"
+if  [ "${quake,,}" != "pak1.pak" ]; then 
+mv "${path}/$quake" "${path}/pak2.pak" 
 fi
 
 #
 # Start the dance!
 #------------
-"/opt/retropie/supplementary/runcommand/runcommand.sh" 0 _PORT_ "quake" ${path}pak0.pak
+"/opt/retropie/supplementary/runcommand/runcommand.sh" 0 _PORT_ "quake" "${path}/pak0.pak"
 
 #
 # Archiving gamessaves
 # if pak1.pak is loaded then exclude move command
 #------------
-zip -mj ${path}${save} ${path}*.sav
-if  [ "$quake" != "pak1.pak" ]; then 
-mv ${path}pak2.pak ${path}${quake} 
+# There is an error in zip if pathes contains spaces within
+zip -mj $path/$save $path/*.sav
+if  [ "${quake,,}" != "pak1.pak" ]; then 
+mv "${path}/pak2.pak" "${path}/$quake" 
 fi
