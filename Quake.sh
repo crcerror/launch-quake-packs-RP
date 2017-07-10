@@ -74,7 +74,7 @@ fi
 #------------
 if ! [ -e "${path}/$quake" ]; then
 echo "Error! ${path}/$quake not found!"
-echoe "Please resolve problem in script or install file!"
+echo "Please resolve problem in script or install file!"
 sleep 10
 exit
 fi
