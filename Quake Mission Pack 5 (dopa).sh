@@ -97,8 +97,7 @@ fi
 # Archiving gamessaves
 # if pak1.pak is loaded then exclude move command
 #------------
-# There is an error in zip if pathes contains spaces within
-zip -mj $path/$save $path/*.sav
+cd "$path" && zip -mj "$save" *.sav
 if  [ "${quake,,}" != "pak1.pak" ]; then 
 mv "${path}/pak2.pak" "${path}/$quake" 
 fi
